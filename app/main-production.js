@@ -6,7 +6,7 @@ requirejs.config({
   },
   paths: { 
     "angular": "../bower_components/angular/angular",
-    "glob4r" : "../node_modules/glob4r/glob4r"
+    "glob4r" : "../vendor/glob4r/glob4r"
   },
   nodeRequire: require,
   deps: ['init']
