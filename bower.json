@@ -1,0 +1,22 @@
+{
+  "name": "nwtemplate",
+  "version": "0.1.0",
+  "authors": [
+    "Haziman Hashim <haziman@abh.my>"
+  ],
+  "main": "app/main.js",
+  "license": "MIT",
+  "homepage": "www.abh.my",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5",
+    "jquery": "~2.1.4",
+    "requirejs": "~2.1.20"
+  }
+}

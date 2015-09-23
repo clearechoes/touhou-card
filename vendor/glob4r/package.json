@@ -1,0 +1,11 @@
+{
+  "name": "glob4-requirejs",
+  "version": "0.0.1",
+  "description": "glob4r!<glob/pattern> to include files matching the glob pattern",
+  "main": "glob4r.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
