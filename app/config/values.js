@@ -1,4 +1,4 @@
-define('config/values.js', [], function(){
+define([], function(){
   
   function Values(ngApp){
   

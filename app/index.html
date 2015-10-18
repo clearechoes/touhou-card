@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html ng-controller="ApplicationController">
-    <head>
-	<title>My Sample Project</title>
-        <!-- data-main attribute tells require.js to load
-             scripts/main.js after require.js loads. -->
-        <!---->
-        <script src="../bower_components/requirejs/require.js"></script>
-        <script src="main.js"></script>
-        
-        <!-- production files can be retrieved by running `grunt build` -->
-        <!--
-        <script src="public/production.js"></script>
-        <!---->
-    </head>
-    <body>
-        <h1>{{ apptitle }}</h1>
-    </body>
+<html ng-controller="ApplicationController" screen>
+  <head>
+    <title>My Sample Project</title>
+    <link rel="stylesheet" href="assets/css/pace/theme.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="text/javascript">
+      gui = require('nw.gui');
+      win = gui.Window.get();
+      
+      // Normalizer for Node's Require and Requirejs's Require
+      window.requireNode = window.require;
+      window.require = undefined; 
+    </script>
+    <!-- data-main attribute tells require.js to load
+         scripts/main.js after require.js loads. <!--//-->
+    <script data-main="main" src="../bower_components/requirejs/require.js"></script>
+    <!---->
+
+    <!-- production files can be retrieved by running `grunt build` <!--//
+    <script src="public/production.js"></script>
+    <!---->
+  </head>
+  <body class="{{pageclass}}">
+    <div class="main-container" 
+         style="{{ bgm ? 'background: url(assets/soundtracks/'+bgm+'/poster.jpg);' : '' }}">
+      <!---->
+      <canvas audio-visualizer ng-model="bgm" width="1024" height="300"></canvas>
+      <!---->     
+      <ng-view></ng-view>
+    </div>
+  </body>
 </html>

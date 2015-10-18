@@ -1,4 +1,4 @@
-define('config/filters.js', [], function(){
+define([], function(){
   
   function Filters(ngApp){
     

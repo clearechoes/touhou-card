@@ -22,10 +22,11 @@ define(["module"], function (module) {
         load(files);
       } else {
         try{
-          path = path || require("path");
-          baseUrl = path.resolve('app') + '/';
-          glob = glob || require("glob");
-          fs = fs || require("fs");
+          path = path || requireNode("path");          
+          glob = glob || requireNode("glob");
+          fs = fs || requireNode("fs");
+          
+          baseUrl = path.resolve(config.baseUrl.replace(/\.\.\//g,'')) + '/';
           var _files = glob.sync(baseUrl + name);
           
           if( _files.length > 0 ){
@@ -45,6 +46,8 @@ define(["module"], function (module) {
             load();
           }
         }catch(ex){
+          //console.log(ex);
+          load();
         }
       }
 

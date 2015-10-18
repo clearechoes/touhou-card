@@ -1,6 +1,5 @@
 {
-  "main": "app/index.html",
-  "node-remote": "file://",
+  "main": "app://localhost/app/index.html#/intro",
   "name": "",
   "description": "",
   "version": "0.1.0",
@@ -10,10 +9,10 @@
   "window": {
     "title": "Node Webkit App Template",
     "icon": "link.png",
-    "toolbar": true,
-    "frame": true,
-    "width": 800,
-    "height": 600,
+    "frame": false,
+    "toolbar": false,
+    "width": 1024,
+    "height": 720,
     "resizable": true,
     "min_width": 800,
     "min_height": 600,

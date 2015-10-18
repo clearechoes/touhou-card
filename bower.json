@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
+    "PACE": "pace#~1.0.2",
     "angular": "~1.4.5",
     "jquery": "~2.1.4",
     "requirejs": "~2.1.20"

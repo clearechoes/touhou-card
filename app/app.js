@@ -1,69 +1,54 @@
-// DO NOT TOUCH THIS FILE,
-// UNLESS YOU KNOW WHAT YOU'RE GOING TO DO
+if( typeof glob_concats == "undefined" ){
+  glob_concats = [];
+}
 
-define('app', [
+define([
   'angular',
-  'glob4r!controllers/*.js',
+  // Configurations
+  'config/config',
+  'config/values',
+  'config/filters',
+  'config/user_config',
+  // Loaders
   'glob4r!services/*.js',
-  'glob4r!factories/*.js',
   'glob4r!directives/*.js',
-  'config/filters.js',
-  'config/values.js'
-], function(){
-  
-  var _args = arguments;
-  var filterConcats = function(arr, in_string){
-    return arr.filter(function(item){
-      return item.indexOf(in_string) >= 0;
+  'glob4r!controllers/*.js'
+  ],
+  function(ng, config, values, filters, userConfig, services, directives, controllers){
+    var app = angular.module('myApp', ['ngRoute', 'ngSanitize','oc.lazyLoad']);
+
+    app.config(config);
+    values(app);
+    filters(app);
+    
+    var parsedName, parsedFunc;
+    glob_concats.forEach(function(modName){
+      parsedName = modName.replace(/_([a-zA-Z])/g, function(a,b){ return b.toUpperCase() });
+      switch(true){
+        case modName.indexOf("_controller") > 0:
+          parsedName = parsedName[0].toUpperCase() + parsedName.substring(1);
+          parsedFunc = controllers ? controllers[modName] : requirejs('controllers/'+modName+'.js');
+          app.controller(parsedName, parsedFunc);
+          break;
+        case modName.indexOf("_service") > 0:
+          parsedName = parsedName[0].toUpperCase() + parsedName.substring(1);
+          parsedFunc = services ? services[modName] : requirejs('services/'+modName+'.js');
+          app.service(parsedName, parsedFunc);
+          break;
+        case modName.indexOf("_factory") > 0:
+          parsedName = parsedName[0].toUpperCase() + parsedName.substring(1);
+          parsedFunc = factories ? factories[modName] : requirejs('factories/'+modName+'.js');
+          app.factory(parsedName, parsedFunc);
+          break;
+        default: // directives
+          parsedFunc = directives ? directives[modName] : requirejs('directives/'+modName+'.js');
+          app.directive(parsedName, parsedFunc);
+          break;
+      }
     });
-  };
-  
-  var funcNameFrom = function(name){
-    name = name.replace(/\_([a-zA-Z0-9])/g, function(a,b,c){
-      return b.toUpperCase();
-    });
-    name = name[0].toUpperCase() + name.substring(1);
-    return name;
-  };
-  
-  // angular
-  var app = angular.module("myApp", []);
-  
-  // registers
-  filterConcats(glob_concats, "_controller").forEach(function(name){
-    try{
-      app.controller(funcNameFrom(name), require("controllers/"+name+".js"));
-    } catch(ex) {
-      var controllers = _args[1];
-      app.controller(funcNameFrom(name), controllers[name]);
-    }
-  });
-  filterConcats(glob_concats, "_service").forEach(function(name){
-    try{
-      app.controller(funcNameFrom(name), require("services/"+name+".js"));
-    } catch(ex) {
-      var services = _args[2];
-      app.service(funcNameFrom(name), services[name]);
-    }
-  });
-  filterConcats(glob_concats, "_factory").forEach(function(name){
-    try{
-      app.controller(funcNameFrom(name), require("factories/"+name+".js"));
-    } catch(ex) {
-      var factories = _args[3];
-      app.factory(funcNameFrom(name), factories[name]);
-    }
-  });
-  filterConcats(glob_concats, "_directive").forEach(function(name){
-    try{
-      app.controller(funcNameFrom(name), require("directives/"+name+".js"));
-    } catch(ex) {
-      var directives = _args[4];
-      app.directive(funcNameFrom(name), directives[name]);
-    }
-  });
-  _args[5](app);
-  _args[6](app);
-  
-  return app;
-});
+    
+    userConfig(app);
+
+    return app;
+  }
+);

@@ -16,7 +16,7 @@ module.exports = function(grunt) {
                 // include: "../node_modules/almond/almond",
                 // use our original main configuration file to avoid
                 // duplication.  this file will pull in all our dependencies
-                mainConfigFile: "app/main-production.js",
+                mainConfigFile: "app/main.js",
                 // optimize: "none",
                 // the output optimized file name
                 out: "app/public/production.js"
