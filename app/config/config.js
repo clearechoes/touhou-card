@@ -15,6 +15,9 @@ define([],function(){
       .when('/home', {
         templateUrl: 'views/home.html'
       })
+	  .when('/dashboard', {
+        templateUrl: 'views/dashboard.html'
+      })
       .otherwise("/home");
 
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|app):/);

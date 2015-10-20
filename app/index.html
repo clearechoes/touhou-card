@@ -22,12 +22,6 @@
     <!---->
   </head>
   <body class="{{pageclass}}">
-    <div class="main-container" 
-         style="{{ bgm ? 'background: url(assets/soundtracks/'+bgm+'/poster.jpg);' : '' }}">
-      <!---->
-      <canvas audio-visualizer ng-model="bgm" width="1024" height="300"></canvas>
-      <!---->     
-      <ng-view></ng-view>
-    </div>
+    <ng-view> </ng-view>
   </body>
 </html>

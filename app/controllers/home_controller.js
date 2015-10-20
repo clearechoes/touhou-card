@@ -5,9 +5,9 @@ define([], function(){
     $root.keyEvents = {};
     
     $scope.reveal();
-    $scope.$parent.$parent.bgm = 'broken_moon';
-    
-    win.showDevTools();
+    //$scope.$parent.bgm = 'broken_moon';
+     
+    //win.showDevTools();
   }
   
   HomeController.$inject = ['$rootScope','$scope', '$location', '$timeout'];
