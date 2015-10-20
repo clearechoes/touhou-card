@@ -1,0 +1,72 @@
+<style>
+	._rel{position:relative;}
+	._time{  position: absolute;
+	  top: 41px;
+	  left: 45px;
+	  text-align: center;
+	  z-index: 5;
+	  color: #989898;
+	  text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+	}
+	._time #time-part{font-size: 3em;}
+	.clockbox{position:absolute;bottom:-10%;right:-2%;}
+	.tajitsu{width:200px;}
+</style>
+<div class="main-container" style="{{ bg_img ? 'background: url(assets/image/background/onsen.jpg);' : 'background: url(assets/images/background/onsen.jpg);' }}">
+	<div class="container" ng-controller="HomeController">
+		<h1>Dashboard</h1>
+	  <a href="#/home">Quit</a>
+	  
+	  
+		<video  width="320" height="240" autoplay loop>
+			<source src="assets/vids/remilia.webm" type="video/webm">
+		</video>
+	</div>
+	<div class="clockbox">
+		<div class="_rel">
+			<div class="_time">
+				
+				<div id="time-part">11:50</div>
+				<div id="date-part">28/02/2015</div>
+			</div>
+			<img class="tajitsu" src="assets/images/misc/tajitsu.png"/>
+		</div>	
+	</div>
+</div>	
+<audio autoplay loop>
+  <source src="assets/soundtracks/temp_bgm/Homeport_Melodic_Taste.mp3" type="audio/mp3">
+</audio>
+<script>
+
+$(function() {
+	
+    var $elie = $(".tajitsu"), degree = 0, timer;
+    rotate();
+    function rotate() {
+        
+        $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});  
+        $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});                      
+        timer = setTimeout(function() {
+            ++degree; rotate();
+        },5);
+    }
+    
+    $("input").toggle(function() {
+        clearTimeout(timer);
+    }, function() {
+        rotate();
+    });
+	
+	
+	/*setTimeout(function(){ 
+		var snd = new Audio("assets/soundtracks/broken_moon/broken_moon_vocal.ogg"); // buffers automatically when created
+		snd.play();
+	}, 1000);*/
+	
+	$( "a" ).click(function() {
+		var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created
+		snd.play();
+	});
+	
+}); 
+</script>
