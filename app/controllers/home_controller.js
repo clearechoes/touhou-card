@@ -6,6 +6,14 @@ define([], function(){
     
     $scope.reveal();
     $scope.$parent.bgm = 'broken_moon_vocal';
+    
+    $timeout(function(){
+      $( "a" ).click(function() {
+        $('#audioVisualizer').trigger('audio:stop');
+        var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created
+        snd.play();
+      });
+    }, 0);
      
     //win.showDevTools();
   }

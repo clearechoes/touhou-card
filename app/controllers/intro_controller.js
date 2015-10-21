@@ -3,8 +3,7 @@ define([], function(){
     $root.pageclass = 'intro';
     $root.keyEvents = {
       "*": function(e){
-        $('.main-container').removeClass('loaded');
-        $('video#bgvid').animate({volume: 0}, 1000, function(){
+        $('video#bgvid').animate({volume: 0, opacity:0}, 1000, function(){
           $root.$apply(function(){
             $location.url('/home');
           });
