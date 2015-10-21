@@ -11,6 +11,7 @@ define([], function(){
       }
     };
     
+    $scope.tracks.active = -1;
     $scope.reveal();
   }
   

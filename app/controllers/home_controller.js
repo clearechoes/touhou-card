@@ -7,6 +7,7 @@ define([], function(){
     $scope.reveal();
     
     $timeout(function(){
+      $scope.tracks.active += 1;
       $( "a" ).click(function() {
         $('#audioVisualizer').trigger('audio:stop');
         var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created

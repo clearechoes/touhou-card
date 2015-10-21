@@ -98,7 +98,6 @@ define([], function(){
           ngModel.$render = function(){
             if( ngModel.$modelValue ){
               if(isPlaying) {
-                // console.log("Stopping sound");
                 stopSound();
               }
               loadSound('assets/soundtracks/' + ngModel.$modelValue + '/audio.ogg');
@@ -143,8 +142,6 @@ define([], function(){
           }).on('audio:start', function(){
             playSound();
           });
-
-          tracks.active += 1;
         }
       }
     };
