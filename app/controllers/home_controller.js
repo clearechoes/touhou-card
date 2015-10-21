@@ -5,7 +5,6 @@ define([], function(){
     $root.keyEvents = {};
     
     $scope.reveal();
-    $scope.$parent.bgm = 'broken_moon_vocal';
     
     $timeout(function(){
       $( "a" ).click(function() {

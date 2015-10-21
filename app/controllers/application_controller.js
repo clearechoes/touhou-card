@@ -1,5 +1,5 @@
 define([], function(){
-  function ApplicationController($scope, $location, $timeout, dummies){
+  function ApplicationController($scope, $location, $timeout, dummies, tracks){
     $scope.apptitle = dummies.apptitle;
     $scope.reveal = function(){
       $timeout(function(){
@@ -18,7 +18,9 @@ define([], function(){
       win.close();
     };
     
+    $scope.tracks = tracks;
+    
   }
-  ApplicationController.$inject = ['$scope', '$location', '$timeout', 'dummies'];
+  ApplicationController.$inject = ['$scope', '$location', '$timeout', 'dummies', 'tracks'];
   return ApplicationController;
 });

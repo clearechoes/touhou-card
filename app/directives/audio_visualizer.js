@@ -8,13 +8,21 @@ define([], function(){
         }
         window.AudioContext = window.webkitAudioContext;
     }
-    var context = new AudioContext();
+    var context = new AudioContext(), scope;
     var audioBuffer;
     var sourceNode;
     var analyser;
     var javascriptNode;
-    var ctx;
+    var ctx, tracks;
     var isPlaying = false;
+    var onEnded = function(){
+      if( tracks.active < tracks.songs.length - 1 )
+        tracks.active += 1;
+      else
+        tracks.active = 0;
+        
+      scope.$apply();
+    };
 
     function setupAudioNodes() {
 
@@ -28,13 +36,6 @@ define([], function(){
         analyser = context.createAnalyser();
         analyser.smoothingTimeConstant = 0.3;
         analyser.fftSize = 512;
-
-        // create a buffer source node
-        sourceNode = context.createBufferSource();
-        sourceNode.connect(analyser);
-        analyser.connect(javascriptNode);
-
-        sourceNode.connect(context.destination);
     }
 
     // load the specified sound
@@ -59,9 +60,16 @@ define([], function(){
         sourceNode.stop(0);
         isPlaying = false;
     }
+    
     function playSound(buffer) {
+        // create a buffer source node
+        sourceNode = context.createBufferSource();
+        sourceNode.connect(analyser);
+        analyser.connect(javascriptNode);
+
+        sourceNode.connect(context.destination);
         sourceNode.buffer = buffer;
-        sourceNode.loop = true;
+        sourceNode.onended = onEnded;
         sourceNode.start(0);
         isPlaying = true;
     }
@@ -83,18 +91,22 @@ define([], function(){
       restrict: "AE",
       require: "?ngModel",
       link: function($scope, elem, $attrs, ngModel){
+        tracks = $scope[$attrs.audioVisualizer];
+        scope = $scope;
+        
         if( ngModel ){
           ngModel.$render = function(){
             if( ngModel.$modelValue ){
-              if(isPlaying) stopSound();
+              if(isPlaying) {
+                // console.log("Stopping sound");
+                stopSound();
+              }
               loadSound('assets/soundtracks/' + ngModel.$modelValue + '/audio.ogg');
-              
             }
           };
           
           // get the context from the canvas to draw on
           ctx = $(elem).get()[0].getContext("2d");
-
           // create a gradient for the fill. Note the strange
           // offset, since the gradient is calculated based on
           // the canvas, not the specific element we draw
@@ -112,7 +124,7 @@ define([], function(){
           // we use information from the analyzer node
           // to draw the volume
           javascriptNode.onaudioprocess = function() {
-
+              
               // get the average for the first channel
               var array =  new Uint8Array(analyser.frequencyBinCount);
               analyser.getByteFrequencyData(array);
@@ -131,6 +143,8 @@ define([], function(){
           }).on('audio:start', function(){
             playSound();
           });
+
+          tracks.active += 1;
         }
       }
     };

@@ -1,6 +1,6 @@
-<div class="main-container" style="{{ bgm ? 'background: url(assets/soundtracks/'+bgm+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon/poster.jpg);' }}">
+<div class="main-container" style="{{ 'background: url(assets/soundtracks/'+tracks.songs[tracks.active]+'/poster.jpg);' }}">
   <!---->
-  <canvas id="audioVisualizer" audio-visualizer ng-model="bgm" width="1024" height="300"></canvas>
+  <canvas id="audioVisualizer" audio-visualizer="tracks" ng-model="tracks.songs[tracks.active]" width="1024" height="300"></canvas>
   <!---->     
 	<div class="container" ng-controller="HomeController">
 	  <div class="menus">
