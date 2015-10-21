@@ -12,14 +12,18 @@
 	.clockbox{position:absolute;bottom:-10%;right:-2%;}
 	.tajitsu{width:200px;}
 </style>
+
+<audio autoplay loop>
+  <source src="assets/soundtracks/homeport_melodic_taste/audio.ogg" type="audio/ogg">
+</audio>
+
 <div class="main-container" style="{{ bg_img ? 'background: url(assets/image/background/onsen.jpg);' : 'background: url(assets/images/background/onsen.jpg);' }}">
 	<div class="container" ng-controller="DashboardController">
 		<h1>Dashboard</h1>
 	  <a href="#/home">Quit</a>
 	  
-	  
 		<video  width="320" height="240" autoplay loop>
-			<source src="assets/vids/remilia.webm" type="video/webm">
+		  <source src="assets/vids/remilia.webm" type="video/webm">
 		</video>
 	</div>
 	<div class="clockbox">
@@ -33,6 +37,7 @@
 		</div>	
 	</div>
 </div>	
+
 <script>
 
 $(function() {
