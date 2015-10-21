@@ -18,6 +18,12 @@ define([],function(){
 	  .when('/dashboard', {
         templateUrl: 'views/dashboard.html'
       })
+	  .when('/options', {
+        templateUrl: 'views/options.html'
+      })
+	  .when('/loadgame', {
+        templateUrl: 'views/loadgame.html'
+      })
       .otherwise("/home");
 
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|app):/);

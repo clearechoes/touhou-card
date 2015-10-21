@@ -10,30 +10,48 @@
 	}
 	._time #time-part{font-size: 3em;}
 	.clockbox{position:absolute;bottom:-10%;right:-2%;}
-	.tajitsu{width:200px;}
-</style>
+	.tajitsu{width:200px;z-index: 4;}
+	.char_main{
+		position: absolute;
+		top: -200%;
+		left: -150%;
+		z-index: 2;
+	}
+	.bubbles{position: absolute;z-index: 1;  top: 0;left: 0;width: 59%;}
+	.bubbles_dialog{position: absolute;top: 33%;left: 17%;width: 68%;vertical-align: middle;text-align: center;font-weight: bold;}
+	.img_100{width:100%;}
+</style>	
 
 <audio autoplay loop>
   <source src="assets/soundtracks/homeport_melodic_taste/audio.ogg" type="audio/ogg">
 </audio>
 
 <div class="main-container" style="{{ bg_img ? 'background: url(assets/image/background/onsen.jpg);' : 'background: url(assets/images/background/onsen.jpg);' }}">
-	<div class="container" ng-controller="DashboardController">
-		<h1>Dashboard</h1>
-	  <a href="#/home">Quit</a>
-	  
-		<video  width="320" height="240" autoplay loop>
-		  <source src="assets/vids/remilia.webm" type="video/webm">
-		</video>
+	<div class="containers" ng-controller="DashboardController">
+		<div class="rows">
+			<div class="col-xs-12 ">
+				<div class="col-xs-12 _uborder">
+					<h1>Dashboard</h1>
+					<video  width="320" height="240" autoplay loop>
+					  <source src="assets/vids/remilia.webm" type="video/webm">
+					</video>
+					<a href="#/" class="btn btn-info">Back</a>
+				</div>
+			</div>	
+		</div>
 	</div>
-	<div class="clockbox">
+	<div class="bubbles bigEntrance ">
+		<img class="img_100" src="assets/images/misc/bubble.png"/>
+		<span class="bubbles_dialog">This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled</span>
+	</div>
+	<div class="clockbox ">
 		<div class="_rel">
-			<div class="_time">
-				
+			<div class="_time tossing">
 				<div id="time-part">11:50</div>
 				<div id="date-part">28/02/2015</div>
 			</div>
 			<img class="tajitsu" src="assets/images/misc/tajitsu.png"/>
+			<img class="char_main hatch" src="assets/images/character/reimu.png"/>
 		</div>	
 	</div>
 </div>	

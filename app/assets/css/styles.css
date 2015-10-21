@@ -130,4 +130,5 @@ ul.main-menu li a {
   
   cursor: pointer;
 }
-
+.containers{padding:1em;}
+._uborder{border-radius:3px;border:1px solid #80D3C1;background:#FFF;margin:1px;padding:1em;}
