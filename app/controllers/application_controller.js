@@ -8,6 +8,7 @@ define([], function(){
     };
     
     $scope.$on("$locationChangeStart", function(){
+      $('#audioVisualizer').trigger('audio:stop');
       Pace.start();
     });
     $scope.$on('$locationChangeSuccess', function(){
