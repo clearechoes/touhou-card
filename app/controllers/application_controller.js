@@ -25,12 +25,20 @@ define([], function(){
         $scope.tracks[key] = options[key];
       });
     };
+    $scope.randomizeTrack = function(){
+      var index = Math.floor((Math.random()*$scope.tracks.songs.length)+1) - 1;
+      return index;
+    };
+    $scope.nextTrack = function(){
+      console.log('next!');
+    };
     
     $scope.poi = function(){
       $('#audioVisualizer').trigger('audio:stop');
       var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created
       snd.play();
     };
+    
     
   }
   ApplicationController.$inject = ['$scope', '$location', '$timeout', 'dummies', 'tracks'];
