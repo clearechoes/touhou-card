@@ -26,7 +26,7 @@ define([], function(){
         $scope.tracks[key] = options[key];
       });
     };
-    $scope.randomizeTrack = function(){
+    $scope.randomTrack = function(){
       var index = Math.floor((Math.random()*$scope.tracks.songs.length)+1) - 1;
       return index;
     };

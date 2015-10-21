@@ -10,7 +10,7 @@ define([], function(){
       $('.main-menu a').on('click', $scope.poi);
           
       $scope.soundtrackSetting({
-        active: 0,
+        active: $scope.randomTrack(),
         autoNext: true, 
         loop: false
       });
