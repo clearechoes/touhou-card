@@ -146,7 +146,7 @@ define([], function(){
                     }
                     isPlaying = false;
                     $scope.$apply();
-                  }, 200);
+                  }, 0);
                 }
               });
             }

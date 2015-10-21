@@ -12,6 +12,7 @@ define([], function(){
       Pace.start();
     });
     $scope.$on('$locationChangeSuccess', function(){
+      $scope.tracks.active = -1;
       Pace.stop();
     });
     
