@@ -1,4 +1,4 @@
-<div class="main-container" style="{{ 'background: url(assets/soundtracks/'+tracks.songs[tracks.active]+'/poster.jpg);' }}">
+<div class="main-container" style="{{ tracks.songs[tracks.active] ? 'background: url(assets/soundtracks/'+tracks.songs[tracks.active]+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon_vocal/poster.jpg);' }}">
   <!---->
   <canvas id="audioVisualizer" audio-visualizer="tracks" ng-model="tracks.songs[tracks.active]" width="1024" height="300"></canvas>
   <!---->     
