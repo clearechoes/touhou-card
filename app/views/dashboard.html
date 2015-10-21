@@ -13,7 +13,7 @@
 	.tajitsu{width:200px;}
 </style>
 <div class="main-container" style="{{ bg_img ? 'background: url(assets/image/background/onsen.jpg);' : 'background: url(assets/images/background/onsen.jpg);' }}">
-	<div class="container" ng-controller="HomeController">
+	<div class="container" ng-controller="DashboardController">
 		<h1>Dashboard</h1>
 	  <a href="#/home">Quit</a>
 	  
@@ -33,9 +33,6 @@
 		</div>	
 	</div>
 </div>	
-<audio autoplay loop>
-  <source src="assets/soundtracks/temp_bgm/Homeport_Melodic_Taste.mp3" type="audio/mp3">
-</audio>
 <script>
 
 $(function() {
@@ -56,17 +53,6 @@ $(function() {
     }, function() {
         rotate();
     });
-	
-	
-	/*setTimeout(function(){ 
-		var snd = new Audio("assets/soundtracks/broken_moon/broken_moon_vocal.ogg"); // buffers automatically when created
-		snd.play();
-	}, 1000);*/
-	
-	$( "a" ).click(function() {
-		var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created
-		snd.play();
-	});
 	
 }); 
 </script>

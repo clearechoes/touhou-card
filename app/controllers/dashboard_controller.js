@@ -5,8 +5,14 @@ define([], function(){
     $root.keyEvents = {};
     
     $scope.reveal();
-    $scope.$parent.$parent.bgm = 'broken_moon_vocal';
     
+    $timeout(function(){
+      $scope.soundtrackSetting({
+        active: -1,
+        autoNext: false, 
+        loop: true
+      });
+    }, 0);
     win.showDevTools();
   }
   

@@ -1,5 +1,5 @@
 define([], function(){
-  function audioVisualizer(){
+  function audioVisualizer($timeout){
     // create the audio context (chrome only for now)
     // create the audio context (chrome only for now)
     if (! window.AudioContext) {
@@ -8,21 +8,14 @@ define([], function(){
         }
         window.AudioContext = window.webkitAudioContext;
     }
-    var context = new AudioContext(), scope;
+    var context = new AudioContext(), scope, dev = false;
     var audioBuffer;
     var sourceNode;
     var analyser;
     var javascriptNode;
     var ctx, tracks;
     var isPlaying = false;
-    var onEnded = function(){
-      if( tracks.active < tracks.songs.length - 1 )
-        tracks.active += 1;
-      else
-        tracks.active = 0;
-        
-      scope.$apply();
-    };
+    var onEnded;
 
     function setupAudioNodes() {
 
@@ -92,7 +85,16 @@ define([], function(){
       require: "?ngModel",
       link: function($scope, elem, $attrs, ngModel){
         tracks = $scope[$attrs.audioVisualizer];
-        scope = $scope;
+        
+        onEnded = function(){
+          $timeout(function(){
+            if( tracks.active < tracks.songs.length - 1 )
+              tracks.active += 1;
+            else
+              tracks.active = 0;
+            $scope.$apply();
+          }, 200);
+        };
         
         if( ngModel ){
           ngModel.$render = function(){
@@ -100,7 +102,7 @@ define([], function(){
               if(isPlaying) {
                 stopSound();
               }
-              loadSound('assets/soundtracks/' + ngModel.$modelValue + '/audio.ogg');
+              loadSound('assets/soundtracks/' + ngModel.$modelValue + '/audio'+(dev?'_short':'')+'.ogg');
             }
           };
           
@@ -146,6 +148,8 @@ define([], function(){
       }
     };
   }
+  
+  audioVisualizer.$inject = ['$timeout'];
   
   return audioVisualizer;
 });

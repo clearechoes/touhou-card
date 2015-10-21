@@ -20,6 +20,17 @@ define([], function(){
     };
     
     $scope.tracks = tracks;
+    $scope.soundtrackSetting = function(options){
+      Object.keys(options).forEach(function(key){
+        $scope.tracks[key] = options[key];
+      });
+    };
+    
+    $scope.poi = function(){
+      $('#audioVisualizer').trigger('audio:stop');
+      var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created
+      snd.play();
+    };
     
   }
   ApplicationController.$inject = ['$scope', '$location', '$timeout', 'dummies', 'tracks'];

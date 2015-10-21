@@ -11,7 +11,12 @@ define([], function(){
       }
     };
     
-    $scope.tracks.active = -1;
+    $scope.soundtrackSetting({
+      active: -1,
+      autoNext: false, 
+      loop: true
+    });
+      
     $scope.reveal();
   }
   

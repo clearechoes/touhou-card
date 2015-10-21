@@ -7,15 +7,14 @@ define([], function(){
     $scope.reveal();
     
     $timeout(function(){
-      $scope.tracks.active = 0;
-      $( "a" ).click(function() {
-        $('#audioVisualizer').trigger('audio:stop');
-        var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created
-        snd.play();
+      $('.main-menu a').on('click', $scope.poi);
+          
+      $scope.soundtrackSetting({
+        active: 0,
+        autoNext: true, 
+        loop: false
       });
     }, 0);
-     
-    //win.showDevTools();
   }
   
   HomeController.$inject = ['$rootScope','$scope', '$location', '$timeout'];

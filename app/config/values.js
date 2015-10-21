@@ -7,6 +7,8 @@ define([], function(){
     })
     ngApp.value('tracks', {
       active: -1,
+      autoNext: true,
+      loop: false,
       songs: [
         'broken_moon_vocal',
         'broken_moon'
