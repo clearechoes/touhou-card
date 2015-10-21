@@ -3,6 +3,7 @@
 requirejs.config({
   baseUrl: '../app',
   shim: {
+    "boostrap": { deps: ['jquery'] },
     "angular": { deps: ['jquery'] },
     "angular-route": { deps: ['angular'] },
     "angular-resource": { deps: ['angular'] },
@@ -17,7 +18,8 @@ requirejs.config({
     "oclazyload": "../bower_components/oclazyload/dist/ocLazyLoad",
     "jquery": "../bower_components/jquery/dist/jquery",
     "pace": "../bower_components/PACE/pace",
-    "glob4r": "../vendor/glob4r/glob4r"
+    "glob4r": "../vendor/glob4r/glob4r",
+    "bootstrap": "assets/js/bootstrap.min"
   },
   nodeRequire: require,
   deps: ['init']

@@ -1,9 +1,9 @@
 requirejs([
-  'angular',
+  'jquery', 'angular',
   'angular-route','angular-resource','angular-sanitize', 'oclazyload', 
-  'pace', 'app'
+  'pace', 'bootstrap', 'app'
 ], function(){
-  var pace = arguments[5];
+  var pace = arguments[6];
   pace.start({
     document: false
   });
