@@ -11,7 +11,7 @@ define([], function(){
     var audioContext = new AudioContext();
     var audioBuffer, sourceNode, analyser, javascriptNode, drawContext, tracks;
     
-    var onEnded, isPlaying = false, dev = true;
+    var onEnded, isPlaying = false, dev = false;
 
 
     function initialize(elem){
