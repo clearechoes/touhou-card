@@ -1,6 +1,6 @@
-<div class="main-container" style="{{ bgm ? 'background: url(assets/soundtracks/'+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon/poster.jpg);' }}">
+<div class="main-container" style="{{ bgm ? 'background: url(assets/soundtracks/'+bgm+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon/poster.jpg);' }}">
   <!---->
-  <canvas audio-visualizer ng-model="bgm" width="1024" height="300"></canvas>
+  <canvas id="audioVisualizer" audio-visualizer ng-model="bgm" width="1024" height="300"></canvas>
   <!---->     
 	<div class="container" ng-controller="HomeController">
 	  <div class="menus">
@@ -16,14 +16,11 @@
 	</div>
 	 
 </div>
-<audio autoplay loop>
-  <source src="assets/soundtracks/broken_moon/broken_moon_vocal.ogg" type="audio/ogg">
-</audio>
 <script>
-
 $(function() {
    		
 	$( "a" ).click(function() {
+        $('#audioVisualizer').trigger('audio:stop');
 		var snd = new Audio("assets/s_effect/poi.ogg"); // buffers automatically when created
 		snd.play();
 	});

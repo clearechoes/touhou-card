@@ -61,6 +61,7 @@ define([], function(){
     }
     function playSound(buffer) {
         sourceNode.buffer = buffer;
+        sourceNode.loop = true;
         sourceNode.start(0);
         isPlaying = true;
     }
@@ -124,6 +125,12 @@ define([], function(){
               drawSpectrum(array);
 
           }
+          
+          $(elem).on('audio:stop', function(){
+            stopSound();
+          }).on('audio:start', function(){
+            playSound();
+          });
         }
       }
     };

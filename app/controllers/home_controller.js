@@ -5,7 +5,7 @@ define([], function(){
     $root.keyEvents = {};
     
     $scope.reveal();
-    //$scope.$parent.bgm = 'broken_moon';
+    $scope.$parent.bgm = 'broken_moon_vocal';
      
     //win.showDevTools();
   }
