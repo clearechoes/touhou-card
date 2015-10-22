@@ -24,6 +24,9 @@ define([],function(){
 	  .when('/loadgame', {
         templateUrl: 'views/loadgame.html'
       })
+	  .when('/boardgame', {
+        templateUrl: 'views/boardgame.html'
+      })
       .otherwise("/home");
 
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|app):/);
