@@ -1,3 +1,7 @@
 _redist
 nwjs.app
 node_modules
+locales
+credits.html
+icudtl.dat
+nw.pak

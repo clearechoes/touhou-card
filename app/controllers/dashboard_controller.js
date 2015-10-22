@@ -13,7 +13,7 @@ define([], function(){
         loop: true
       });
     }, 0);
-    win.showDevTools();
+    //win.showDevTools();
   }
   
   DashboardController.$inject = ['$rootScope','$scope', '$location', '$timeout'];
