@@ -137,3 +137,5 @@ ul.main-menu li a {
   -webkit-app-region: no-drag;
 }
 ._uborder{border-radius:3px;border:1px solid #80D3C1;background:#FFF;margin:1px;padding:1em;}
+._rel{position:relative;}
+.img_100{width:100%;}
