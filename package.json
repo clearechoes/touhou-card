@@ -10,7 +10,7 @@
     "title": "Node Webkit App Template",
     "icon": "link.png",
     "frame": true,
-    "toolbar": true,
+    "toolbar": false,
     "width": 980,
     "height": 600,
     "resizable": true,

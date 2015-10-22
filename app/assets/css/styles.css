@@ -13,10 +13,9 @@
 
 html, body {
   padding: 0; margin: 0;
-  background-color: rgba(0,0,0,0);
+  background-color: black;
   height: 100%;
   overflow: hidden;
-  border-radius: 10px;
 }
 
 .main-container {
@@ -30,8 +29,8 @@ html, body {
   background-size: cover !important;
   background-repeat: no-repeat;
   background-color: black;
-  border-radius: 10px;
 }
+
 .main-container.loaded {
   opacity: 1;
 }
@@ -48,7 +47,6 @@ html, body {
   transform: translateX(-50%) translateY(-50%);
   background: url(../images/intro_poster.png) no-repeat;
   background-size: cover;
-  border-radius: 10px; 
 }
 
 .intro .press-any-key {
@@ -134,5 +132,8 @@ ul.main-menu li a {
   
   cursor: pointer;
 }
-.containers{padding:1em;}
+.containers{
+  padding:1em;
+  -webkit-app-region: no-drag;
+}
 ._uborder{border-radius:3px;border:1px solid #80D3C1;background:#FFF;margin:1px;padding:1em;}
