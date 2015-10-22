@@ -2,7 +2,11 @@ define([], function(){
   
   function DashboardController($root, $scope, $location, $timeout){
     $root.pageclass = 'dashboard';
-    $root.keyEvents = {};
+    $root.keyEvents = {
+      'META+13': /* enter */ function(){
+        win.toggleFullscreen();
+      }
+    }
     
     $scope.reveal();
     
