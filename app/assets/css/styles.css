@@ -26,7 +26,7 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
-  background-size: cover !important;
+  background-size: 100% auto;
   background-repeat: no-repeat;
   background-color: black;
 }
@@ -108,7 +108,7 @@ ul.main-menu li {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
   
   margin-bottom: 10px;
-  transition: right cubic-bezier(.17,.67,.83,.67) 200ms;
+  transition: right cubic-bezier(.17,.67,.83,.67) 100ms;
 }
 
 ul.main-menu li.active, ul.main-menu li:hover {
