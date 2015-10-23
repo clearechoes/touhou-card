@@ -21,12 +21,47 @@ define([],function(){
 	  .when('/options', {
         templateUrl: 'views/options.html'
       })
+	  
+	  
+	  
 	  .when('/loadgame', {
         templateUrl: 'views/loadgame.html'
+      })
+	  .when('/savegame', {
+        templateUrl: 'views/savegame.html'
+      })
+	  
+	  
+	  
+	  .when('/quest', {
+        templateUrl: 'views/quest.html'
+      })
+	  .when('/achievement', {
+        templateUrl: 'views/achievement.html'
+      })
+	  
+	  //---------- BattleCard ---------//
+	  .when('/pre_battle', {
+        templateUrl: 'views/pre_battle.html'
       })
 	  .when('/boardgame', {
         templateUrl: 'views/boardgame.html'
       })
+	  //---------- End BattleCard ---------//
+	  
+	  
+	  //---------- Develop New Card ---------//
+	  .when('/deck', {
+        templateUrl: 'views/deck.html'
+      })
+	  .when('/summon', {
+        templateUrl: 'views/summon.html'
+      })
+	  .when('/spellcard', {
+        templateUrl: 'views/spellcard.html'
+      })
+	  //---------- End Develop New Card ---------//
+	  
       .otherwise("/home");
 
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|app):/);
