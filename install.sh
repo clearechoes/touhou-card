@@ -16,4 +16,5 @@ if [ -d "nwjs.app" ]; then
 fi
 
 mv "nwjs-${ver}-osx-x64/nwjs.app" ./
+cp "_redist/ffmpegsumo.so" "nwjs.app/Contents/Frameworks/nwjs Framework.framework/Libraries/ffmpegsumo.so"
 rm -Rf "nwjs-${ver}-osx-x64"
