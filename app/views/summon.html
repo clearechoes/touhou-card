@@ -1,3 +1,25 @@
+<style>
+	.character_animate{
+		position:absolute;  
+		z-index: 1;
+		 bottom:0;
+		 right:0;
+	}
+	.hidden{display:none;}
+	.video_animate {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 110%;
+	}
+	.spellcard_animate{
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	font-size: 125%;
+	}
+</style>
 <div class="main-container" style="{{ bg_img ? 'background: url(assets/image/background/onsen.jpg);' : 'background: url(assets/images/background/onsen.jpg);' }}">
   <!---->
   <canvas id="audioVisualizer" audio-visualizer="tracks" ng-model="tracks.songs[tracks.active]" width="1024" height="300"></canvas>
@@ -9,10 +31,28 @@
 				<div class="col-xs-12">		
 				</div>	
 				<a href="#/dashboard" class="btn btn-info">Back</a>
+				<a class="btn btn-danger animates">Animate</a>
 			</div>
 		</div>	
 	</div>
+	<video class="video_animate" autoplay loop hidden>
+	  <source src="assets/vids/hyperspace.mp4" type="video/mp4">
+	</video>
+	<div class="spellcard_animate" hidden>
+		<h3>Activate</h3>
+		<h2>Divine Spirit "Fantasy Seal"</h2>
+		
+	</div>
+	<img class="character_animate hidden" src="assets/images/character/reimu.png"/>	
 </div>
 <script>
-	
-</script>			
+	$( ".animates" ).click(function() {
+		$( ".character_animate" ).attr("class","character_animate animated slideInLeft");
+		
+		$( ".video_animate , .spellcard_animate" ).fadeIn();
+		setTimeout(function(){ 
+			$( ".character_animate" ).attr("class","character_animate animated fadeOut");
+			$( ".video_animate , .spellcard_animate" ).fadeOut();
+		}, 1500);
+	});
+</script>				
