@@ -64,7 +64,7 @@ define([], function(){
     };
 
     Card.prototype.toString = function(){
-      return this.name + "(" + this.att_type[0].toUpperCase() + ")";
+      return this.name + "(" + this.att_type[0].toUpperCase() + ") (" + this.stats[0] + ")";
     };
     
     var CardAbility = function(options){
