@@ -5,3 +5,7 @@ locales
 credits.html
 icudtl.dat
 nw.pak
+*.dll
+*.exe
+*.dat
+*.iss
