@@ -4,21 +4,21 @@
 	
 	.topplayer{
 		position:absolute;  
-		  z-index: 1;
-		  top: 6.777777%;
-		  left: 1%;
-		  width: 27%;
-		  height: 16.999999%;
+        z-index: 1;
+        top: 6.777777%;
+        left: 1%;
+        width: 27%;
+        height: 16.999999%;
 		background:rgba(202, 81, 81, 0.1);
 	}
 	
 	.bottomplayer{
 		position:absolute;  
 		z-index: 1;
-		  top: 75%;
-		  left: 1%;
-		  width: 27%;
-		  height: 17%;
+        bottom: 8%;
+        left: 1%;
+        width: 27%;
+        height: 17%;
 		background:rgba(202, 81, 81, 0.1);
 	}
 	
@@ -29,23 +29,117 @@
 		 right:0;
 	}
 	.hidden{display:none;}
+    
+    .holder {
+      display: block;
+      position: absolute;
+    }
+    .in-hand, .row-melee, .row-range {
+      width: 184.5%; height: 74%;
+    }
+    
+    .topplayer .in-hand {
+      top: -40%;
+      left: 129%;
+    }
+    .topplayer .row-melee {
+      top: 148%;
+      left: 129%;
+      height: 98%;
+    }
+    .topplayer .row-range {
+      top: 40%;
+      left: 129%;
+      height: 98%;
+    }
+    
+    .bottomplayer .in-hand {
+      top: 75%;
+      left: 129%;
+    }
+    .bottomplayer .row-melee {
+      top: -144%;
+      left: 129%;
+      height: 98%;
+    }
+    .bottomplayer .row-range {
+      top: -35%;
+      left: 129%;
+      height: 98%;
+    }
+    
+    .card {
+      display: block;
+      width: 60px;
+      height: 100%;
+      margin-left: 5px;
+      background: white;
+      float: left;
+      overflow: hidden;
+      -webkit-writing-mode: vertical-rl;
+      cursor: pointer;
+      -webkit-user-select: none;
+    }
+    
+    .topplayer .in-hand .card:hover {
+      margin-top: 10px;
+    }
+    
+    .bottomplayer .in-hand .card:hover {
+      margin-top: -10px;
+    }
+    
+    .score {
+      position: absolute;
+      left: -10%;
+      top: 39%;
+      width: 8%;
+      text-align: center;
+    }
 </style>
+<!--
 <audio autoplay loop>
-  <source src="assets/soundtracks/srw_flawless_moon/audio.ogg" type="audio/ogg">-->
+  <source src="assets/soundtracks/srw_flawless_moon/audio.ogg" type="audio/ogg">
 </audio>
+-->
 <div class="main-container" style="{{ bg_img ? 'background: url(assets/image/background/onsen.jpg);' : 'background: url(assets/images/background/onsen.jpg);' }}">
   <img class="img_100 boardbackground" src="assets/images/misc/boards.png"/>
-  <div class="topplayer">P1</div>	
-  <div class="bottomplayer">
-	P2 
-	<a href="#/dashboard" class="btn btn-danger">Surrender</a>
-	<a class="btn btn-danger animates">Animate</a>
-  </div>	
-	<div class="containers board" ng-controller="DashboardController"></div> <!--dont ever touch it-->
-	
-	
-		<img class="character_animate hidden" src="assets/images/character/reimu.png"/>
-		
+  
+  <div class="containers board" ng-controller="BoardgameController">
+    <div class="topplayer">
+      P1
+      <div class="holder in-hand">
+        <card class="card" ng-repeat="card in Deck.players[0].availCards()">{{card.toString()}}</card>
+      </div>
+      <div class="holder row-range">
+        <span class="score">{{Scores[0].range}}</span>
+        <card class="card" ng-repeat="card in Deck.players[0].usedCards('range')">{{card.toString()}}</card>
+      </div>
+      <div class="holder row-melee">
+        <span class="score">{{Scores[0].melee}}</span>
+        <card class="card" ng-repeat="card in Deck.players[0].usedCards('melee')">{{card.toString()}}</card>
+      </div>
+    </div>	
+    <div class="bottomplayer">
+      P2 
+      <div class="holder row-melee">
+        <span class="score">{{Scores[1].melee}}</span>
+        <card class="card" ng-repeat="card in Deck.players[1].usedCards('melee')">{{card.toString()}}</card>
+      </div>
+      <div class="holder row-range">
+        <span class="score">{{Scores[1].range}}</span>
+        <card class="card" ng-repeat="card in Deck.players[1].usedCards('range')">{{card.toString()}}</card>
+      </div>
+      <div class="holder in-hand">
+        <card class="card" ng-repeat="card in Deck.players[1].availCards()">{{card.toString()}}</card>
+      </div>
+      <a href="#/dashboard" class="btn btn-danger">Surrender</a>
+      <a class="btn btn-danger animates">Animate</a>
+    </div>
+    
+  </div> <!--dont ever touch it-->
+  
+  <img class="character_animate hidden" src="assets/images/character/reimu.png"/>		
 </div>
 <script>
 	$( ".animates" ).click(function() {

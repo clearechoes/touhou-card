@@ -3,7 +3,7 @@ define([], function(){
   function DashboardController($root, $scope, $location, $timeout){
     $root.pageclass = 'dashboard';
     $root.keyEvents = {
-      'META+13': /* enter */ function(){
+      'ALT+13': /* enter */ function(){
         win.toggleFullscreen();
       }
     }
@@ -17,7 +17,6 @@ define([], function(){
         loop: true
       });
     }, 0);
-    //win.showDevTools();
   }
   
   DashboardController.$inject = ['$rootScope','$scope', '$location', '$timeout'];

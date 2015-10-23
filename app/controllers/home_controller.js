@@ -5,7 +5,7 @@ define([], function(){
     
     $root.pageclass = 'home';
     $root.keyEvents = {
-      'META+13': /* enter */ function(){
+      'ALT+13': /* enter */ function(){
         win.toggleFullscreen();
       },
       '38': /* UP */ function(){
@@ -43,8 +43,7 @@ define([], function(){
       });
       
     }, 0);
-    
-    win.showDevTools();
+
   }
   
   HomeController.$inject = ['$rootScope','$scope', '$location', '$timeout'];
