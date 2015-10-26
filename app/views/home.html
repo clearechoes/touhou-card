@@ -1,17 +1,29 @@
-<div class="main-container" style="{{ tracks.songs[tracks.active] ? 'background: url(assets/soundtracks/'+tracks.songs[tracks.active]+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon_vocal/poster.jpg);' }}">
+<style>
+	.blurry{
+	-webkit-filter: blur(1px) brightness(1.1);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+	}
+	
+
+</style>
+
+<div class="main-container blurry" style="{{ tracks.songs[tracks.active] ? 'background: url(assets/soundtracks/'+tracks.songs[tracks.active]+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon_vocal/poster.jpg);' }}">
   <!---->
   <canvas id="audioVisualizer" width="1024" height="300"
           audio-visualizer="tracks" ng-model="tracks.songs[tracks.active]"></canvas>
   <!---->     
-	<div class="container" ng-controller="HomeController">
-	  <div class="menus ">
+	
+	 
+</div>
+<div class="container" ng-controller="HomeController">
+	  <div class="menus  ">
 		<ul class="main-menu">
-		  <li class="active"><a href="#/dashboard">New Game</a></li>
+		  <li class=""><a href="#/dashboard">New Game</a></li>
 		  <li><a href="#/loadgame">Load Game</a></li>
 		  <li><a href="#/options">Options</a></li>
 		  <li><a href="#" ng-click="ExitGame()">Exit Game</a></li>
 		</ul>
 	  </div>
 	</div>
-	 
-</div>

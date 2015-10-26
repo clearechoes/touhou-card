@@ -1,5 +1,6 @@
 <style>
 	.img_100{width:100%;height:100%;}
+	.img_100w{width:100%;}
 	.boardbackground{position:absolute;}
 	
 	.topplayer{
@@ -76,12 +77,13 @@
     
     .card {
       display: block;
-      width: 65px;
-      height: 120%;
+      width: 15.666%;
+      height: 100%;
 	  border: 2px solid #B23131;
 	  border-radius: 3px;
       margin-right: -12px;
-      background: white;
+      background:url('assets/images/misc/backgroundcard.jpg');
+	  background-size:cover; 
       float: left;
       overflow: hidden;
       -webkit-writing-mode: vertical-rl;
@@ -91,6 +93,29 @@
 	  -moz-box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
 	  box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
     }
+	
+	.in-hand .card  {height: 120%;}
+	
+	.card span {
+	  color: #000;
+	  z-index: 2;
+	  position: absolute;
+	  font-weight: bold;
+	  text-shadow: 1px 1px #FFF;
+	}
+	.card i{
+	  z-index: 2;
+	  position: absolute;
+	  left: 18%%;
+	  padding: 1% 5%;
+	  background: #fff;
+	  border: 2px solid #FF5700;
+	  border-radius: 3px;
+	  font-weight: bold;
+	  -webkit-writing-mode: initial;
+	  writing-mode: initial;
+	}
+	
 	.topplayer .in-hand .card{transition: all 0.2s ease;margin-top: -10px;}
 	.topplayer .in-hand .card:hover {
       margin-top: 10px;
@@ -108,6 +133,8 @@
       width: 8%;
       text-align: center;
     }
+	
+	.cardimg{position:absolute;top:0;left:0}
 </style>
 <audio autoplay loop>
   <source src="assets/soundtracks/srw_flawless_moon/audio.ogg" type="audio/ogg">
@@ -134,30 +161,38 @@
       P2 
       <div class="holder row-melee">
         <span class="score">{{Scores[1].melee}}</span>
-        <card class="card" ng-repeat="card in Deck.players[1].usedCards('melee')">{{card.toString()}}</card>
+        <card class="card _rel" ng-repeat="card in Deck.players[1].usedCards('melee')">
+			<span>{{card.toString()}}</span>
+		</card>
       </div>
-      <div class="holder row-range">
+      <div class="holder row-range ">
         <span class="score">{{Scores[1].range}}</span>
-        <card class="card" ng-repeat="card in Deck.players[1].usedCards('range')">{{card.toString()}}</card>
+        <card class="card _rel" ng-repeat="card in Deck.players[1].usedCards('range')">{{card.toString()}}</card>
       </div>
       <div class="holder in-hand">
-        <card class="card" ng-repeat="card in Deck.players[1].availCards()">{{card.toString()}}</card>
+        <card class="card _rel" ng-repeat="card in Deck.players[1].availCards()">
+			<i>5</i>
+			<img class="img_100w cardimg" src="assets/images/character/reimu.png"/>
+			<!--<span>{{card.toString()}}</span>-->
+		</card>
       </div>
       <a href="#/dashboard" class="btn btn-danger">Surrender</a>
-      <a class="btn btn-danger animates">Animate</a>
+	  <a class="btn btn-danger animates">Pass</a>
+      <a class="btn btn-danger animates">Anima</a>
     </div>
     
   </div> <!--dont ever touch it-->
-  
   <img class="character_animate hidden" src="assets/images/character/reimu.png"/>		
 </div>
 <script>
 	$( ".animates" ).click(function() {
 		$( ".character_animate" ).attr("class","character_animate animated slideInLeft");
+		$( ".character_animate" ).fadeIn();
 		setTimeout(function(){ 
 			$( ".character_animate" ).attr("class","character_animate animated fadeOut");
-			//$( ".character_animate" ).fadeOut();
+			$( ".character_animate" ).fadeOut();
 		}, 1500);
-		
+		console.log("wow");
 	});
+	
 </script>			
