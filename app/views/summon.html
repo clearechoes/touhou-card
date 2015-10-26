@@ -1,6 +1,7 @@
 <style>
 	.character_animate{
 		position:absolute;  
+		height:100%;
 		z-index: 1;
 		 bottom:0;
 		 right:0;
@@ -10,8 +11,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 110%;
+	width: 100%;
 	}
+	.vids_animate{vertical-align:middle;}
 	.spellcard_animate{
 	color: #fff;
 	position: absolute;
@@ -35,9 +37,11 @@
 			</div>
 		</div>	
 	</div>
-	<video class="video_animate" autoplay loop hidden>
-	  <source src="assets/vids/hyperspace.mp4" type="video/mp4">
-	</video>
+	<div class="vids_animate">
+		<video class="video_animate" autoplay loop hidden>
+		  <source src="assets/vids/hyperspace.mp4" type="video/mp4">
+		</video>
+	</div>
 	<div class="spellcard_animate" hidden>
 		<h3>Activate</h3>
 		<h2>Divine Spirit "Fantasy Seal"</h2>

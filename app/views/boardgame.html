@@ -38,6 +38,12 @@
       width: 184.5%; height: 74%;
     }
     
+	.hidecard card{
+		background:url('assets/images/misc/backcard.jpg');
+		background-size:cover;
+	}
+	.hidecard span{display:none;}
+	
     .topplayer .in-hand {
       top: -40%;
       left: 129%;
@@ -70,21 +76,27 @@
     
     .card {
       display: block;
-      width: 60px;
-      height: 100%;
-      margin-left: 5px;
+      width: 65px;
+      height: 120%;
+	  border: 2px solid #B23131;
+	  border-radius: 3px;
+      margin-right: -12px;
       background: white;
       float: left;
       overflow: hidden;
       -webkit-writing-mode: vertical-rl;
       cursor: pointer;
       -webkit-user-select: none;
+	  -webkit-box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
+	  -moz-box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
+	  box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
     }
-    
-    .topplayer .in-hand .card:hover {
+	.topplayer .in-hand .card{transition: all 0.2s ease;margin-top: -10px;}
+	.topplayer .in-hand .card:hover {
       margin-top: 10px;
     }
     
+	.bottomplayer .in-hand .card{transition: all 0.2s ease;margin-top: 10px;}
     .bottomplayer .in-hand .card:hover {
       margin-top: -10px;
     }
@@ -106,8 +118,8 @@
   <div class="containers board" ng-controller="BoardgameController">
     <div class="topplayer">
       P1
-      <div class="holder in-hand">
-        <card class="card" ng-repeat="card in Deck.players[0].availCards()">{{card.toString()}}</card>
+      <div class="holder in-hand hidecard">
+        <card class="card" ng-repeat="card in Deck.players[0].availCards()"><span>{{card.toString()}}</span></card>
       </div>
       <div class="holder row-range">
         <span class="score">{{Scores[0].range}}</span>
