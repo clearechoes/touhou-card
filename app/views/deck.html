@@ -1,18 +1,88 @@
+<style>
+	.main_deck{
+	  overflow-y: scroll;
+	  border: 3px solid #ddd;
+	  border-radius: 10px;
+	  width: 70%;
+	  height: 400px;
+	}
+	.card {
+      width: 15.666%;
+      height: 130px;
+	  border: 2px solid #B23131;
+	  border-radius: 3px;
+      margin-right: -12px;
+      background:url('assets/images/misc/backgroundcard.jpg');
+	  background-size:cover; 
+      float: left;
+      overflow: hidden;
+      -webkit-writing-mode: vertical-rl;
+      cursor: pointer;
+      -webkit-user-select: none;
+	  -webkit-box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
+	  -moz-box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
+	  box-shadow: 3px 3px 10px -3px rgba(0,0,0,0.75);
+    }
+	.white{background:#fff;}
+</style>
 <div class="main-container" style="{{ bg_img ? 'background: url(assets/image/background/onsen.jpg);' : 'background: url(assets/images/background/onsen.jpg);' }}">
   <!---->
   <canvas id="audioVisualizer" audio-visualizer="tracks" ng-model="tracks.songs[tracks.active]" width="1024" height="300"></canvas>
   <!---->     
 	<div class="containers" ng-controller="DashboardController">
 		<div class="rows">
-			<div class="col-xs-12 _uborder fadeIn">
-				<h2>Deck</h2>
-				<div class="col-xs-12">		
-				</div>	
+			<div class="col-xs-12 _uborder fadeIn white">
+				  <ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#home">Main Deck</a></li>
+					<li><a data-toggle="tab" href="#menu1">Side Deck</a></li>
+					<li><a data-toggle="tab" href="#menu2">King Card</a></li>
+				  </ul>
+				  
+				  <div class="tab-content">
+					<div id="home" class="tab-pane fade in active">
+						
+						<h3>Main Deck</h3>
+						<p>Put 30 Card into Main Deck</p>
+						<div class="col-xs-12">	
+							<div class="main_deck">
+								<div class="card"></div>
+							</div>	
+						</div>
+					</div>
+					<div id="menu1" class="tab-pane fade">
+					  <h3>Side Deck</h3>
+					  <p>Card ready between 2 phase card battle</p>
+						<div class="col-xs-12">	
+							<div class="main_deck">
+								<div class="card"></div>
+							</div>	
+						</div>
+					</div>
+					<div id="menu2" class="tab-pane fade">
+					  <h3>Main Character Deck</h3>
+					  <p>Pick 5 Main Character into King Deck. 1st slot most likely to appear 50% instant play</p>
+						<div class="col-xs-12">	
+							<div class="main_deck">
+								<div class="card"></div>
+							</div>
+						</div>
+					</div>
+					
+					
+				  </div> 
+				
+					
 				<a href="#/dashboard" class="btn btn-info">Back</a>
 			</div>
 		</div>	
 	</div>
 </div>
 <script>
-	
+	setTimeout(function(){
+		var wow= '';
+		for(i=1; i<=60; i++){
+			wow = wow + '<div class="card animatecards'+i+'">card'+i+'</div>';	
+		}
+		$(".main_deck").html(wow);
+	}, 500);
 </script>			

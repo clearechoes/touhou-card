@@ -9,7 +9,7 @@
 
 </style>
 
-<div class="main-container blurry" style="{{ tracks.songs[tracks.active] ? 'background: url(assets/soundtracks/'+tracks.songs[tracks.active]+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon_vocal/poster.jpg);' }}">
+<div class="main-container " style="{{ tracks.songs[tracks.active] ? 'background: url(assets/soundtracks/'+tracks.songs[tracks.active]+'/poster.jpg);' : 'background: url(assets/soundtracks/broken_moon_vocal/poster.jpg);' }}">
   <!---->
   <canvas id="audioVisualizer" width="1024" height="300"
           audio-visualizer="tracks" ng-model="tracks.songs[tracks.active]"></canvas>
@@ -20,7 +20,7 @@
 <div class="container" ng-controller="HomeController">
 	  <div class="menus  ">
 		<ul class="main-menu">
-		  <li class=""><a href="#/dashboard">New Game</a></li>
+		  <li class="active"><a href="#/dashboard">New Game</a></li>
 		  <li><a href="#/loadgame">Load Game</a></li>
 		  <li><a href="#/options">Options</a></li>
 		  <li><a href="#" ng-click="ExitGame()">Exit Game</a></li>
